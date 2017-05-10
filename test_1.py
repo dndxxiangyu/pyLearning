@@ -58,3 +58,11 @@ print(d['micial'])
 #在使用key之前最好先判断一下key是否在dic中，micial in d
 print(d.get('ccc'))
 
+#set，和dict类似，也是一组key的集合，但是不存储value，key不能重复
+s = set([1,2,3,4,5,2])
+s = set((1,2,3,4,5,2))
+s1 = {1,2,3,3,3}
+s1.add('cc')
+print(s)
+print(s | s1)
+print(s & s1)
