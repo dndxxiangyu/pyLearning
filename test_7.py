@@ -8,7 +8,8 @@ class Student(object):
 
     def print_score(self):
         print('%s, %s' % (self.name, self.score))
-
+    def __test(self):
+        print('private test method')
 
 def other_method():
     print("other_ method")
@@ -44,9 +45,10 @@ print(student1._Student__father)
 print(student1._mother)
 
 student1.__father = "father"
-# 该变量其实和上面的变量是不同的，这个不需要解释器进行修改变量名称
+# 该变量其实和上面的变量不是同一个变量，这个不需要解释器进行修改变量名称
 print(student1.__father)
-
+student1._Student__test()
+#student1.__test()
 
 if __name__ == '__main__':
     Student.other_method = other_method
@@ -60,3 +62,5 @@ if __name__ == '__main__':
     print(student.father)
     student.other_method = other_method1
     student.other_method()
+    print(hasattr(student, '_Student__father'))
+    print(hasattr(student, 'other_method'))
