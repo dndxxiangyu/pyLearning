@@ -47,7 +47,7 @@ def test():
 
 Student.set_score = set_score
 Student.test = test
-student = Student()
+student = Student('ccc')
 student.set_score(111)
 # student.test()
 student.test = test
