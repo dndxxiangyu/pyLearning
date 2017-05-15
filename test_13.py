@@ -52,14 +52,15 @@ class ListMetaclass(type):
     # def __new__(cls, *args, **kwargs):
     #     print("create class, ", cls, cls.__name__, args, kwargs)
     #     return type.__new__(cls, args, kwargs)
-    # def __new__(cls, *args, **kwargs):
-    #     kwargs['add'] = lambda self, value: self.append(value)
-    #     print('cls: ', cls, "\nargs: ", args, '\nkwargs:', kwargs)
-    #     return type.__new__(cls, args[0], args[1], {args[2], kwargs})
-    def __new__(cls, name, bases, attrs):
-        attrs['add'] = lambda self, value: self.append(value)
-        print('cls: ', cls, "\nname: ", name, '\nbases:', bases, '\nattrs: ', attrs)
-        return type.__new__(cls, name, bases, attrs)
+    def __new__(cls, *args, **kwargs):
+        kwargs['add'] = lambda self, value: self.append(value)
+        print('cls: ', cls, "\nargs: ", args, '\nkwargs:', kwargs)
+        a = dict(args[2], **kwargs)
+        return type.__new__(cls, args[0], args[1], a)
+    # def __new__(cls, name, bases, attrs):
+    #     attrs['add'] = lambda self, value: self.append(value)
+    #     print('cls: ', cls, "\nname: ", name, '\nbases:', bases, '\nattrs: ', attrs)
+    #     return type.__new__(cls, name, bases, attrs)
 class ObjectCreator(list, metaclass=ListMetaclass):
     pass
 

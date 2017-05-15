@@ -55,7 +55,7 @@ class Student(object):
             return l
     def __getattr__(self, item):
         '''
-        定义该方法后，调用类的方法或属性时，如果查找比如student.name，没有name属性，则会里面报错
+        定义该方法后，调用类的方法或属性时，如果查找比如student.name，没有name属性，则会立马报错
         如果定义了改法，则如果对象中没有该属性，则会直接调用该方法来进行查找
         AttributeError: 'Student' object has no attribute 'name'
         也可以直接返回一个函数
